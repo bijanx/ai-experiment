@@ -14,13 +14,22 @@
 #### Tables
 - accounts
 - backtests
+- broker_interaction
+- data_source_interaction
 - orders
 - signals
 - strategies
 - trades
 
 #### Subsystems
-- 
+- backtesting
+- broker API integration
+- cronjobs
+- deployment
+- live trading
+- portfolio optimization
+- real-time market data collection
+- testing and quality assurance
 
 #### Setup
 ```sh
