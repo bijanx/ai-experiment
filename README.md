@@ -1,9 +1,6 @@
 # ai-money
 [Backlog](https://trello.com/b/JIK5gFh8/tradesys)
 
-#### Goals
-- determine which strategies to trade and trade them
-
 #### Glossary
 - Backtest: A simulation of trades on historical market data
 - ClassificationFilter: A binary classification function that a TradingStrategy uses to filter its signals
