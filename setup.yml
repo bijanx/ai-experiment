@@ -1,0 +1,7 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - apt: name={{item}} state=present update_cache=yes
+      with_items:
+        - vim
