@@ -6,25 +6,35 @@
 
 #### Glossary
 - Backtest: A simulation of trades on historical market data
-- Order: A decision emitted from Trading Strategies
-- Signal: An action that is fired to enter/exit/modify a trade from a Trade Rule
-- Trade Rule: A rule that defines the entry and exit of a trade. A trade rule creates entry/exit Signals.
-- Trading Strategy: A system that receives market data and returns Orders
+- ClassificationFilter: A binary classification function that a TradingStrategy uses to filter its signals
+- Feature: A data mining feature. A calculation meant to represent measure of some concept of interest
+- Order: A decision emitted from a TradingStrategy
+- Signal: An action that is emitted by a TradeRule to enter/exit/modify a trade
+- TradeRule: A rule that defines the entry and exit of a trade. A TradeRule creates entry/exit Signals
+- TradingStrategy: Utilizes a trade rule and the option to apply a ClassificationFilter
 
-#### Tables
+#### Data Entities
 - accounts
 - backtests
 - broker_interaction
+- classification_filters
 - data_source_interaction
 - orders
 - signals
-- strategies
+- trading_strategies
 - trades
+
+#### 
+- Determining Strategies to trade
+- Analytics
+- Persistence
 
 #### Subsystems
 - backtesting
 - broker API integration
+- data API integration
 - cronjobs
+- database migrations
 - deployment
 - live trading
 - portfolio optimization
