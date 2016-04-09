@@ -1,4 +1,5 @@
 # ai-money
+[Backlog](https://trello.com/b/JIK5gFh8/tradesys)
 
 #### Goals:
 - determine which strategies to trade and trade them
