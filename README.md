@@ -2,13 +2,13 @@
 [Backlog](https://trello.com/b/JIK5gFh8/tradesys)
 
 #### Glossary
-- Backtest: A simulation of trades on historical market data
-- ClassificationFilter: A binary classification function that a TradingStrategy uses to filter its signals
-- Feature: A data mining feature. A calculation meant to represent measure of some concept of interest
-- Order: A decision emitted from a TradingStrategy
-- Signal: An action that is emitted by a TradeRule to enter/exit/modify a trade
-- TradeRule: A rule that defines the entry and exit of a trade. A TradeRule creates entry/exit Signals
-- TradingStrategy: Utilizes a trade rule and the option to apply a ClassificationFilter
+- *Backtest*: A simulation of trades on historical market data
+- *ClassificationFilter*: A binary classification function that a TradingStrategy uses to filter its signals
+- *Feature*: A data mining feature. A calculation meant to represent measure of some concept of interest
+- *Order*: A decision emitted from a TradingStrategy
+- *Signal*: An action that is emitted by a TradeRule to enter/exit/modify a trade
+- *TradeRule*: A rule that defines the entry and exit of a trade. A TradeRule creates entry/exit Signals
+- *TradingStrategy*: Utilizes a trade rule and the option to apply a ClassificationFilter
 
 #### Data Entities
 - accounts
