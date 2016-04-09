@@ -1,5 +1,8 @@
 # ai-money
 
+#### Goals:
+- determine which strategies to trade and trade them
+
 #### Glossary:
 - Trade Rule: A rule that defines the entry and exit of a trade. A trade rule creates entry/exit Signals.
 - Backtest: A simulation of trades on historical market data
@@ -14,6 +17,10 @@
 - strategies
 - trades
 
-#### Business Operations:
-- backtest a trading strategy and store the results of the backtest
-- create a trading strategy with just a trade rule
+#### Setup
+```sh
+git clone git@github.com:bpourriahi/ai-money.git
+cd ai-money/sys
+vagrant up
+vagrant ssh
+```
