@@ -3,7 +3,7 @@
   become: yes
   vars:
     postgresql_version: 9.5
-    ansible_os_family:  "Debian"
+    ansible_os_family:  'Debian'
     rvm1_rubies:
       - 'ruby-2.3.0'
   roles:
