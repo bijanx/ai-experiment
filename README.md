@@ -21,11 +21,6 @@
 - trading_strategies
 - trades
 
-#### 
-- Determining Strategies to trade
-- Analytics
-- Persistence
-
 #### Subsystems
 - backtesting
 - broker API integration
