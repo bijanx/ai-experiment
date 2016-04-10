@@ -1,11 +1,11 @@
 # ai-money
-- [] Trading Agents
-- [] Tradings Agents Updater (Collect mock broker interfaces to test system) 
-- [] DataCollector
-- [] Deployment
-- [] Staging Environment
-- [] Production Environment
-- [] Broker Interaction
+- [ ] Trading Agents
+- [ ] Tradings Agents Updater (Collect mock broker interfaces to test system) 
+- [ ] DataCollector
+- [ ] Deployment
+- [ ] Staging Environment
+- [ ] Production Environment
+- [ ] Broker Interaction
 
 #### Setup
 ```sh
