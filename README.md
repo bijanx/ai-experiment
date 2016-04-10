@@ -1,4 +1,6 @@
 # ai-money
+
+#### Initiatives
 **Phase 1**  
 - [ ] Trading Agents
 - [ ] Tradings Agents Updater (Collect mock broker interfaces to test system)
