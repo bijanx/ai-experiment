@@ -1,7 +1,7 @@
 # ai-money
 **Phase 1**  
 - [ ] Trading Agents
-- [ ] Tradings Agents Updater (Collect mock broker interfaces to test system) 
+- [ ] Tradings Agents Updater (Collect mock broker interfaces to test system)  
 **Phase 2**  
 - [ ] DataCollector
 - [ ] Deployment
