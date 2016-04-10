@@ -1,5 +1,11 @@
 # ai-money
-[Backlog](https://trello.com/b/JIK5gFh8/tradesys)
+- [] Trading Agents
+- [] Tradings Agents Updater (Collect mock broker interfaces to test system) 
+- [] DataCollector
+- [] Deployment
+- [] Staging Environment
+- [] Production Environment
+- [] Broker Interaction
 
 #### Setup
 ```sh
@@ -28,15 +34,3 @@ vagrant ssh
 - signals
 - trading_strategies
 - trades
-
-#### Subsystems
-- backtesting
-- broker API integration
-- data API integration
-- cronjobs
-- database migrations
-- deployment
-- live trading
-- portfolio optimization
-- real-time market data collection
-- testing and quality assurance
