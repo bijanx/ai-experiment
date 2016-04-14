@@ -14,6 +14,7 @@
 - accounts
 - backtests
 - orders
+- signals
 - strategies
 - trades
 
