@@ -12,6 +12,10 @@
 - [ ] Production Environment
 - [ ] Broker Interaction
 
+#### Dependencies
+- Vagrant
+- Ansible
+
 #### Setup
 ```sh
 git clone git@github.com:bpourriahi/ai-money.git
