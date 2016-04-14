@@ -1,22 +1,20 @@
 # ai-money
 
-#### Goals:
-- determine which strategies to trade and trade them
+#### Initiatives
+**Phase 1**  
+- [ ] Trading Agents
+- [ ] Tradings Agents Updater (Collect mock broker interfaces to test system)
 
-#### Glossary:
-- Trade Rule: A rule that defines the entry and exit of a trade. A trade rule creates entry/exit Signals.
-- Backtest: A simulation of trades on historical market data
-- Signal: An action that is fired to enter/exit/modify a trade from a Trade Rule
-- Trading Strategy: A system that receives market data and returns Orders
-- Order: A decision emitted from Trading Strategies
+**Phase 2**  
+- [ ] DataCollector
+- [ ] Deployment
+- [ ] Staging Environment
+- [ ] Production Environment
+- [ ] Broker Interaction
 
-#### Tables:
-- accounts
-- backtests
-- orders
-- signals
-- strategies
-- trades
+#### Dependencies
+- Vagrant
+- Ansible
 
 #### Setup
 ```sh
@@ -25,3 +23,23 @@ cd ai-money/sys
 vagrant up
 vagrant ssh
 ```
+
+#### Glossary
+- *Backtest*: A simulation of trades on historical market data
+- *ClassificationFilter*: A binary classification function that a TradingStrategy uses to filter its signals
+- *Feature*: A data mining feature. A calculation meant to represent measure of some concept of interest
+- *Order*: A decision emitted from a TradingStrategy
+- *Signal*: An action that is emitted by a TradeRule to enter/exit/modify a trade
+- *TradeRule*: A rule that defines the entry and exit of a trade. A TradeRule creates entry/exit Signals
+- *TradingStrategy*: Utilizes a trade rule and the option to apply a ClassificationFilter
+
+#### Data Entities
+- accounts
+- backtests
+- broker_interaction
+- classification_filters
+- data_source_interaction
+- orders
+- signals
+- trading_strategies
+- trades
