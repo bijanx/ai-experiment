@@ -20,6 +20,7 @@
 ```sh
 git clone git@github.com:bpourriahi/ai-money.git
 cd ai-money/sys
+ssh-add
 vagrant up
 vagrant ssh
 ```
