@@ -1,2 +1,0 @@
-ANXS.postgresql
-rvm_io.rvm1-ruby
