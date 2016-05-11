@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-ITERATIONS = 2
+ITERATIONS = 200
 ALPHA = 0.001
 
 def computeCost(hypothesis,y):
@@ -24,19 +24,31 @@ def gradientDescent(X, y, theta, length):
     costs = []
 
     for iter in range(ITERATIONS):
-      hypothesis = np.dot(X.T, theta)
-      cost = computeCost(hypothesis, y)
-      error = hypothesis - y
-      print('cost', cost)
-      print('error', error)
-      print('error times x1', np.dot(error, X.T[:,0]))
-      # print('sum', sum_of_errors_squared)
-      theta_0 = theta[0] - np.dot(error, X.T[:,0]) / length * 2
-      theta_1 = theta[1] - np.dot(error, X.T[:,1]) / length * 2
-      # print(theta_0,theta_1)
-      # print("theta when starting", theta)
+      theta_0 = theta_update(theta, 0, X, y)
+      theta_1 = theta_update(theta, 1, X, y)
+      
       theta = np.array([theta_0, theta_1])
-      # print("theta when done", theta)
+      #print('theta', theta)     
+      hypothesis = np.dot(X.T, theta)
+      print('cost:',computeCost(hypothesis, y))
+
+
+def theta_update(theta, index, X, y):
+    hypothesis = np.dot(X.T, theta)
+    #print(hypothesis)
+    error = hypothesis - y
+    #print(error)
+    s_error = error * X.T[:,index]
+    #print('s_error', s_error)
+    s_sum = sum(s_error)
+    #print('s_sum',s_sum)
+    alpha_error = ALPHA * s_sum
+    #print('a', alpha_error)
+    averaged = alpha_error / (2 * len(y)) 
+    #print('averaged', averaged)
+    return_value = theta[index] - averaged
+    #print('return_value', return_value)
+    return return_value
 
 def plotData(X,y):
     plt.plot(X,y, 'ro')
