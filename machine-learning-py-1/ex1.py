@@ -2,19 +2,13 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-ITERATIONS = 5
+ITERATIONS = 2
 ALPHA = 0.001
 
 def computeCost(hypothesis,y):
     first_thing = (1. / (2. * len(y)))
-    print('hypothesis', hypothesis)
-    print('error', hypothesis - y)
-    print('error sqaured', np.dot(hypothesis, hypothesis))
     cost = np.sum(np.square(hypothesis - y))
-    print('cost', cost)
-    final_cost = first_thing * cost
-
-    return final_cost
+    return first_thing * cost
 
 def append_bias(X, length):
     bias = np.array([1] * length)
@@ -30,16 +24,19 @@ def gradientDescent(X, y, theta, length):
     costs = []
 
     for iter in range(ITERATIONS):
-      error = computeCost(X,y,theta,length)
-      x1 = ALPHA / 2 * length
-      sum_of_errors_squared = np.sum(np.dot(error**2, X.T)) * ALPHA
+      hypothesis = np.dot(X.T, theta)
+      cost = computeCost(hypothesis, y)
+      error = hypothesis - y
+      print('cost', cost)
+      print('error', error)
+      print('error times x1', np.dot(error, X.T[:,0]))
       # print('sum', sum_of_errors_squared)
-      theta_0 = theta[0] - sum_of_errors_squared / length * 2
-      theta_1 = theta[1] - sum_of_errors_squared / length * 2
+      theta_0 = theta[0] - np.dot(error, X.T[:,0]) / length * 2
+      theta_1 = theta[1] - np.dot(error, X.T[:,1]) / length * 2
       # print(theta_0,theta_1)
-      print("theta when starting", theta)
+      # print("theta when starting", theta)
       theta = np.array([theta_0, theta_1])
-      print("theta when done", theta)
+      # print("theta when done", theta)
 
 def plotData(X,y):
     plt.plot(X,y, 'ro')
@@ -52,9 +49,8 @@ def main():
     # plotData(X,y)
     X = append_bias(X, length)
     theta = np.array([0.,0.])
-    hypothesis = np.dot(X.T, theta)
-    error = computeCost(hypothesis,y)
-    print(error)
-    # theta = gradientDescent(X, y, theta, length)
+    # error = computeCost(hypothesis,y)
+    # print(error)
+    theta = gradientDescent(X, y, theta, length)
 
 main()
