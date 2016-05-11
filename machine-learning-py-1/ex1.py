@@ -2,21 +2,17 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-ITERATIONS = 15
+ITERATIONS = 5
 ALPHA = 0.001
 
-def computeCost(X, y, theta, length):
-    i_cost = 0
-
-    # something with the math here is wrong
-    # I need to make sure I understand exactly
-    # what each matrix is supposed to do and then
-    # how the operations look under the hood
-    for i in range(length):
-        hypothesis = theta[0] + theta[1] * X[i]
-        i_cost = i_cost + np.sum(np.square(hypothesis - y[i]))
-    final_cost = i_cost * 1 / (2 * length)
-    #print(final_cost)
+def computeCost(hypothesis,y):
+    first_thing = (1. / (2. * len(y)))
+    print('hypothesis', hypothesis)
+    print('error', hypothesis - y)
+    print('error sqaured', np.dot(hypothesis, hypothesis))
+    cost = np.sum(np.square(hypothesis - y))
+    print('cost', cost)
+    final_cost = first_thing * cost
 
     return final_cost
 
@@ -31,16 +27,19 @@ def grabData():
     return X, y, len(y)
 
 def gradientDescent(X, y, theta, length):
-    hypothesis = theta[0] + theta[1] * X.transpose()
-    costs = [] 
+    costs = []
 
     for iter in range(ITERATIONS):
-      hypothesis = np.dot(theta.transpose(), X)
-      error = hypothesis - y
-      temp_theta_0 = theta[0] - ALPHA * np.sum(np.dot(error ** 2, X[:,1])) / (2 * length)
-      temp_theta_1 = theta[1] - ALPHA * np.sum(np.dot(error ** 2, X[:,2])) / (2 * length)
-      theta = np.array([temp_theta_0, temp_theta_1])
-      print(theta)
+      error = computeCost(X,y,theta,length)
+      x1 = ALPHA / 2 * length
+      sum_of_errors_squared = np.sum(np.dot(error**2, X.T)) * ALPHA
+      # print('sum', sum_of_errors_squared)
+      theta_0 = theta[0] - sum_of_errors_squared / length * 2
+      theta_1 = theta[1] - sum_of_errors_squared / length * 2
+      # print(theta_0,theta_1)
+      print("theta when starting", theta)
+      theta = np.array([theta_0, theta_1])
+      print("theta when done", theta)
 
 def plotData(X,y):
     plt.plot(X,y, 'ro')
@@ -51,9 +50,11 @@ def plotData(X,y):
 def main():
     X, y, length = grabData()
     # plotData(X,y)
-    X = append_bias(X, length) 
-    theta = np.array([0,0])
-    theta = gradientDescent(X, y, theta, length)
-     
+    X = append_bias(X, length)
+    theta = np.array([0.,0.])
+    hypothesis = np.dot(X.T, theta)
+    error = computeCost(hypothesis,y)
+    print(error)
+    # theta = gradientDescent(X, y, theta, length)
 
 main()
