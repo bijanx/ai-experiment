@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-ITERATIONS = 200
-ALPHA = 0.001
+ITERATIONS = 900
+ALPHA = 0.03
 
 def computeCost(hypothesis,y):
     first_thing = (1. / (2. * len(y)))
@@ -21,17 +21,14 @@ def grabData():
     return X, y, len(y)
 
 def gradientDescent(X, y, theta, length):
-    costs = []
-
     for iter in range(ITERATIONS):
       theta_0 = theta_update(theta, 0, X, y)
       theta_1 = theta_update(theta, 1, X, y)
-      
       theta = np.array([theta_0, theta_1])
       #print('theta', theta)     
       hypothesis = np.dot(X.T, theta)
-      print('cost:',computeCost(hypothesis, y))
-
+      #print('cost:', computeCost(hypothesis, y))
+    return theta
 
 def theta_update(theta, index, X, y):
     hypothesis = np.dot(X.T, theta)
@@ -50,19 +47,25 @@ def theta_update(theta, index, X, y):
     #print('return_value', return_value)
     return return_value
 
-def plotData(X,y):
+def plotRealData(X,y):
     plt.plot(X,y, 'ro')
     plt.xlabel('house size')
     plt.ylabel('price')
-    plt.show()
+
+def plotPredictionLine(theta,X, y):
+    # creates an array of data points
+    x = np.linspace(np.amax(y),np.amin(X),100)
+    y = theta[0] + theta[1] * x 
+    plt.plot(x,y)
 
 def main():
-    X, y, length = grabData()
-    # plotData(X,y)
-    X = append_bias(X, length)
+    ox, y, length = grabData()
+    X = append_bias(ox, length)
     theta = np.array([0.,0.])
-    # error = computeCost(hypothesis,y)
-    # print(error)
     theta = gradientDescent(X, y, theta, length)
-
+    print('final_cost:', computeCost(np.dot(X.T,theta), y))
+    plotRealData(ox,y)
+    plotPredictionLine(theta,X, y)
+    plt.show()
+    
 main()
