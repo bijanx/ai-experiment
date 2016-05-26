@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D 
 
-ITERATIONS = 1
+ITERATIONS = 2
 ALPHA = 0.3
 
 def grabdata():
@@ -21,22 +21,31 @@ def grabdata():
 
 def gradientDescent(X, y):
     print('GRADIENT DESCENT===================================================================')
-    theta = np.array([0,0,0])
+    theta = np.array([0.,0.,0.])
     for iter in range(ITERATIONS):
+        new_theta = np.array([0.,0.,0.])
         for feature in range(len(X)):
+            print('feature =', feature)
+            print('feature length', len(X))
             htheta = X.T * theta 
-            print('htheta = ', htheta)
+            #print('htheta = ', htheta)
             error = htheta.T - y
-            print('initial error', error)
+            #print('initial error', error)
             f_error = error * X[feature]
-            print('feature error', f_error)
+            #print('feature error', f_error)
             i_sum = sum(f_error)
-            print('initial sum', i_sum)
+            #print('initial sum', i_sum)
             a_sum = i_sum / 2 * len(X[feature])
-            print('averaged sum', a_sum)
+            #print('averaged sum', a_sum)
             alpha_sum = a_sum * ALPHA
-            print('alpha times sum', alpha_sum)
-            new_theta = theta[feature] - 
+            #print('alpha times sum', alpha_sum)
+            diff = theta[feature] - alpha_sum
+            #print('difference', diff)
+            np.insert(new_theta, diff, feature)
+            new_theta[feature] = theta[feature] - alpha_sum 
+            #print('new theta', new_theta)
+        theta = new_theta
+            
 
 def regularize(X):
     print('REGULARIZATION===================== = = = = ============ = = = ====================')
@@ -47,7 +56,7 @@ def regularize(X):
         if index > 0:
             average = sum(X[index]) / len(X[index])
             print('average', average)
-            variance = np.std(X[index])
+            variance = np.float(np.max(X[index])) - np.float(np.min(X[index]))
             print('variance', variance)
             averaged = X[index] - average
             print('averaged', averaged)
@@ -59,8 +68,6 @@ def regularize(X):
 
     print('regularized X is', regularized_X)
     return np.array(regularized_X)
-       
-
 
 def main():
     X, y = grabdata()
@@ -68,5 +75,4 @@ def main():
     print('X before descent', X)
     theta = gradientDescent(X, y)
     
-
 main()
